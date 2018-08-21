@@ -1,3 +1,47 @@
-<p>
-  resultados works!
-</p>
+<div class="container">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <form class="form-inline">
+          <div class="form-group mx-sm-3 mb-2">
+            <input type="password" class="form-control" id="inputPassword2" placeholder="Buscar">
+          </div>
+          <button type="submit" class="btn btn-primary mb-2">Buscar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Evaluacion</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Resultado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Colegio Mayor</th>
+        <td>Finalizada</td>
+        <td>
+          <a [routerLink]="['/ver-resultados']" class="btn btn-primary">Ver resultado</a>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Lauvid</th>
+        <td>Finalizada</td>
+        <td>
+          <a [routerLink]="['/ver-resultados']" class="btn btn-primary">Ver resultado</a>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">facebook</th>
+        <td>Finalizada</td>
+        <td>
+          <a [routerLink]="['/ver-resultados']" class="btn btn-primary">Ver resultado</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

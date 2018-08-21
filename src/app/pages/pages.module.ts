@@ -6,6 +6,9 @@ import { ResultadosComponent } from './resultados/resultados.component';
 import { SharedModule } from '../shared/shared.module';
 import { pages_routes } from './pages.routes';
 import { PagesComponent } from './pages.component';
+import { VerResultadoComponent } from './resultados/ver-resultado/ver-resultado.component';
+import { ConfiguracionesComponent } from './settings/configuraciones/configuraciones.component';
+import { PerfilComponent } from './settings/perfil/perfil.component';
 
 @NgModule({
   imports: [
@@ -17,7 +20,10 @@ import { PagesComponent } from './pages.component';
     NuevaEvaluacionComponent, 
     EvaluacionesComponent, 
     ResultadosComponent,
-    PagesComponent
+    PagesComponent,
+    VerResultadoComponent,
+    ConfiguracionesComponent,
+    PerfilComponent
   ],
   
 })

@@ -1,25 +1,40 @@
-      <!-- ============================================================== -->
-      <!-- Left Sidebar - style you can find in sidebar.scss  -->
-      <!-- ============================================================== -->
-      <aside class="left-sidebar">
-        <!-- Sidebar scroll-->
-        <div class="scroll-sidebar">
-            <!-- Sidebar navigation-->
-            <nav class="sidebar-nav">
-                <ul id="sidebarnav">
-                    <li *ngFor="let opcion of _sidebarService.menu"> 
-                        <a class="waves-effect waves-dark" [routerLink]="[opcion.url]" routerLinkActive="active" aria-expanded="false">
-                            <i [class]="opcion.icon"></i>
-                                <span class="hide-menu">{{opcion.titulo}}</span>
-                        </a>
-                    </li>
-                </ul>
-                
-            </nav>
-            <!-- End Sidebar navigation -->
+<!-- ============================================================== -->
+<!-- Left Sidebar - style you can find in sidebar.scss  -->
+<!-- ============================================================== -->
+<aside class="left-sidebar">
+    <!-- Sidebar scroll-->
+    <div class="scroll-sidebar">
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav">
+            <ul id="sidebarnav">
+                <li *ngFor="let opcion of _sidebarService.menu">
+                    <a class="waves-effect waves-dark" [routerLink]="[opcion.url]" routerLinkActive="active" aria-expanded="false">
+                        <i [class]="opcion.icon"></i>
+                        <span class="hide-menu">{{opcion.titulo}}</span>
+                    </a>
+                </li>
+            </ul>
+
+        </nav>
+        <!-- End Sidebar navigation -->
+    </div>
+    <!-- End Sidebar scroll-->
+    <footer class="footer p-3 mb-2 bg-dark text-white">
+        <div class="row ">
+            <a [routerLink]="['/account']" class="btn btn-dark" data-toggle="tooltip" data-placement="top" title="Perfil">
+                <i class="mdi mdi-account-circle iconoSidebar"></i>
+            </a>
+
+            <a [routerLink]="['/settings']" class="btn btn-dark" data-toggle="tooltip" data-placement="top" title="Configuraciones">
+                <i class="mdi mdi-settings iconoSidebar"></i>
+            </a>
+            <a  class="btn btn-dark" data-toggle="tooltip" data-placement="top" title="Salir">
+                <i class="mdi mdi-power iconoSidebar"></i>
+            </a>
+
         </div>
-        <!-- End Sidebar scroll-->
-    </aside>
-    <!-- ============================================================== -->
-    <!-- End Left Sidebar - style you can find in sidebar.scss  -->
-    <!-- ============================================================== -->
+    </footer>
+</aside>
+<!-- ============================================================== -->
+<!-- End Left Sidebar - style you can find in sidebar.scss  -->
+<!-- ============================================================== -->

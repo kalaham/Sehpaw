@@ -8,12 +8,14 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './login/register.component';
 import { app_routes } from './app.routes';
 import { ServiceModule } from './services/service.module';
+import { PrincipalComponent } from './login/principal/principal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    PrincipalComponent,
   ],
   imports: [
     BrowserModule,
