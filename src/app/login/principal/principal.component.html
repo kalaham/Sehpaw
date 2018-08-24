@@ -1,3 +1,88 @@
-<p>
-  principal works!
-</p>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Principal</title>
+
+	<link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/style.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/colors/default-dark.css" id="theme" rel="stylesheet" type="text/css">
+
+
+</head>
+
+<body>
+
+
+	<nav class="navbar navbar-dark bg-dark">
+		<a class="navbar-brand" href="index.html">
+			<!-- Logo icon -->
+			<b>
+				<img src="assets/images/logo_icon.png" alt="homepage" class="dark-logo logo-icon" />
+			</b>
+			<!--End Logo icon -->
+			<!-- Logo text -->
+			<span>
+				<img src="assets/images/logo_text.png" alt="homepage" class="dark-logo logo-text" />
+			</span>
+		</a>
+		<form class="form-inline">
+			<!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
+			<a class="btn btn-success my-2 my-sm-0" type="submit" [routerLink]="['/login']">Login</a>
+			<pre>  </pre>
+			<a class="btn btn-info my-2 my-sm-0" type="submit" [routerLink]="['/register']">Registrar</a>
+		</form>
+	</nav>
+
+
+	<div class="container">
+		<div class="card text-center">
+			<div class="card-header">
+				Featured
+			</div>
+			<div class="card-body">
+				<h5 class="card-title">Special title treatment</h5>
+				<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+				<a href="#" class="btn btn-primary">Go somewhere</a>
+			</div>
+			<div class="card-footer text-muted">
+				2 days ago
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">Special title treatment</h5>
+						<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+						<a href="#" class="btn btn-primary">Go somewhere</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">Special title treatment</h5>
+						<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+						<a href="#" class="btn btn-primary">Go somewhere</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<script src="assets/plugins/jquery/jquery.min.js"></script>
+	<script src="assets/plugins/bootstrap/js/popper.min.js"></script>
+	<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/js/perfect-scrollbar.jquery.min.js"></script>
+	<script src="assets/js/waves.js"></script>
+	<script src="assets/js/sidebarmenu.js"></script>
+	<script src="assets/js/custom.min.js"></script>
+
+</body>
+
+</html>

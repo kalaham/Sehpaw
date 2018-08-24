@@ -24,3 +24,12 @@
     margin-left: 17px ;
     margin-right: 17px ;
 }
+.padre {
+    /* background: yellow; */
+    /* height: 150px; */
+    /*IMPORTANTE*/
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
