@@ -16,16 +16,19 @@
     <thead class="thead-dark">
       <tr>
         <th scope="col">Evaluacion</th>
-        <th scope="col">Estado</th>
         <th scope="col">Resultado</th>
+        <th scope="col">Calificar</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <th scope="row">Colegio Mayor</th>
-        <td>Finalizada</td>
+        <!-- <td>Finalizada</td> -->
         <td>
           <a [routerLink]="['/ver-resultados']" class="btn btn-primary">Ver resultado</a>
+        </td>
+        <td>
+          <a [routerLink]="['/calificar']" class="btn btn-success">Evaluar/Calificar</a>
         </td>
       </tr>
       <tr>

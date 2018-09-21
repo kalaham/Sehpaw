@@ -9,6 +9,7 @@ import { PagesComponent } from './pages.component';
 import { VerResultadoComponent } from './resultados/ver-resultado/ver-resultado.component';
 import { ConfiguracionesComponent } from './settings/configuraciones/configuraciones.component';
 import { PerfilComponent } from './settings/perfil/perfil.component';
+import { CalificarComponent } from './calificar/calificar.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { PerfilComponent } from './settings/perfil/perfil.component';
     PagesComponent,
     VerResultadoComponent,
     ConfiguracionesComponent,
-    PerfilComponent
+    PerfilComponent,
+    CalificarComponent
   ],
   
 })

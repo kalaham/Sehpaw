@@ -6,6 +6,7 @@ import { PagesComponent } from './pages.component';
 import { VerResultadoComponent } from './resultados/ver-resultado/ver-resultado.component';
 import { ConfiguracionesComponent } from './settings/configuraciones/configuraciones.component';
 import { PerfilComponent } from './settings/perfil/perfil.component';
+import { CalificarComponent } from './calificar/calificar.component';
 
 const pagesRoutes: Routes = [
     {
@@ -16,12 +17,12 @@ const pagesRoutes: Routes = [
             { path: 'resultados', component: ResultadosComponent },
             { path: 'nueva-evaluacion', component: NuevaEvaluacionComponent },
             { path: 'ver-resultados', component: VerResultadoComponent },
+            { path: 'calificar', component: CalificarComponent },
             { path: 'settings', component: ConfiguracionesComponent },
             { path: 'account', component: PerfilComponent },
 
            { path: '', pathMatch: 'full', redirectTo: '/evaluaciones' }
         ]
-
     }
 ];
 
