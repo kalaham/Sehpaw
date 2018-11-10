@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {  HttpClientModule } from '@angular/common/http';
-import { SharedService, SidebarService } from './service.index';
+import { AdminGuard, ResultadoService, SharedService, SidebarService, UsuarioService} from './service.index';
+import { LoginGuardGuard } from './guards/login-guard.guard';
 
 @NgModule({
     imports: [ 
@@ -10,7 +11,11 @@ import { SharedService, SidebarService } from './service.index';
      ],
     providers: [ 
         SharedService,
-        SidebarService
+        SidebarService,
+        UsuarioService,
+        LoginGuardGuard,
+        ResultadoService,
+        AdminGuard
      ],
     declarations:[  ]
 })

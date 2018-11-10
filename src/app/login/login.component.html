@@ -29,19 +29,22 @@
                     </a>
                 </div>
                 <hr>
-                <form>
+                
+                <form ngNativeValidate #f="ngForm" class="form-horizontal form-material" (ngSubmit)="ingresar(f)">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Correo</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                        <small id="emailHelp" class="form-text text-muted">Este campo es obligatorio</small>
+                        <!-- <label for="exampleInputEmail1">Correo</label> -->
+                        <input [ngModel]="email" name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  placeholder="Enter email" required>
+                        <!-- <small id="emailHelp" class="form-text text-muted">Este campo es obligatorio</small> -->
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Contraseña</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        <!-- <label for="exampleInputPassword1">Contraseña</label> -->
+                        <input [ngModel]="password" name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
                     </div>
                     <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <input [(ngModel)]="recuerdame" name="recuerdame" type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">recuerdame</label>
+                        <br>
+                        <a href="javascript:void(0)" class="text-dark pull-left">¿olvidaste tu contraseña?</a>
                     </div>
                     <button type="submit" class="btn btn-info derecha">Entrar</button>
                     <a type="submit" class="btn btn-danger izquierda" [routerLink]="['/principal']">Volver</a>

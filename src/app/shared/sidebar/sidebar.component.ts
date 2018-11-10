@@ -7,10 +7,11 @@ import { SidebarService } from '../../services/service.index';
   styles: []
 })
 export class SidebarComponent implements OnInit {
-
+  role:string;
   constructor(public _sidebarService: SidebarService) { }
 
   ngOnInit() {
+    this.role = localStorage.getItem('role')
   }
 
 }

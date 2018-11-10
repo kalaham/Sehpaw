@@ -7,19 +7,29 @@ import { VerResultadoComponent } from './resultados/ver-resultado/ver-resultado.
 import { ConfiguracionesComponent } from './settings/configuraciones/configuraciones.component';
 import { PerfilComponent } from './settings/perfil/perfil.component';
 import { CalificarComponent } from './calificar/calificar.component';
+import { LoginGuardGuard } from '../services/guards/login-guard.guard';
+import { UsuariosComponent } from './usuarios/usuarios.component';
+import { AdminGuard } from '../services/service.index';
 
 const pagesRoutes: Routes = [
     {
         path: '',
         component: PagesComponent,
+        canActivate:[LoginGuardGuard],
         children: [
-            { path: 'evaluaciones', component: EvaluacionesComponent },
-            { path: 'resultados', component: ResultadosComponent },
-            { path: 'nueva-evaluacion', component: NuevaEvaluacionComponent },
-            { path: 'ver-resultados', component: VerResultadoComponent },
-            { path: 'calificar', component: CalificarComponent },
-            { path: 'settings', component: ConfiguracionesComponent },
-            { path: 'account', component: PerfilComponent },
+            { path: 'evaluaciones', component: EvaluacionesComponent ,data: { titulo: 'Evaluaciones' }},
+            { path: 'resultados', component: ResultadosComponent,data: { titulo: 'Resultado' } },
+            { path: 'nueva-evaluacion', component: NuevaEvaluacionComponent,data: { titulo: 'Nueva evaluacion' } },
+            { path: 'ver-resultados', component: VerResultadoComponent,data: { titulo: 'Ver resultados' } },
+            { path: 'calificar', component: CalificarComponent,data: { titulo: 'Calificar' } },
+            { path: 'settings', component: ConfiguracionesComponent,data: { titulo: 'Configuracion' } },
+            { path: 'account', component: PerfilComponent,data: { titulo: 'Perfil' } },
+            { 
+                path: 'usuarios',
+                canActivate: [ AdminGuard ],
+                component: UsuariosComponent,
+                data: { titulo: 'Usuarios' }
+            },
 
            { path: '', pathMatch: 'full', redirectTo: '/evaluaciones' }
         ]

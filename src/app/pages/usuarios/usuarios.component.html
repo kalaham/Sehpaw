@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="form-group">
+    <label for="">Buscar</label>
+    <input type="text" class="form-control" name="buscar-usuario" id="" aria-describedby="buscar-usuario" placeholder="Buscar usuario">
+    <small id="buscar-usuario" class="form-text text-muted">Introduce el usuario que desas buscar</small>
+  </div>
+  <table class="table">
+    <thead>
+      <tr class="text-center">
+        <th>N°</th>
+        <th>Nombre</th>
+        <th>Rol</th>
+        <th>Correo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let usuario of usuarios,let i = index ">
+        <td>{{i+1}}</td>
+        <td>{{usuario.nombre}}</td>
+        <td>{{usuario.role}}</td>
+        <td>{{usuario.email}}</td>
+        <td>
+            <i class="mdi mdi-pencil"></i>
+            <i class="mdi mdi-close"></i>
+        </td>
+      </tr>
+      <tr>
+        <td scope="row"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

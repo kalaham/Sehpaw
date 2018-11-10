@@ -9,6 +9,7 @@ import { RegisterComponent } from './login/register.component';
 import { app_routes } from './app.routes';
 import { ServiceModule } from './services/service.module';
 import { PrincipalComponent } from './login/principal/principal.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { PrincipalComponent } from './login/principal/principal.component';
     SharedModule,
     PagesModule,
     app_routes,
-    ServiceModule
+    ServiceModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
 

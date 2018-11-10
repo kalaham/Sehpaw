@@ -10,7 +10,7 @@
                 <li *ngFor="let opcion of _sidebarService.menu">
                     <a class="waves-effect waves-dark" [routerLink]="[opcion.url]" routerLinkActive="active" aria-expanded="false">
                         <i [class]="opcion.icon"></i>
-                        <span class="hide-menu">{{opcion.titulo}}</span>
+                        <span class="hide-menu">{{opcion.titulo}}</span>                        
                     </a>
                 </li>
             </ul>

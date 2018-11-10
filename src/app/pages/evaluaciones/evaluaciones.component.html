@@ -17,35 +17,25 @@
       <tr>
         <th scope="col">Evaluacion</th>
         <th scope="col">Resultado</th>
-        <th scope="col">Calificar</th>
+        <th scope="col" *ngIf="adminrole">Calificar</th>
+        <th scope="col" *ngIf="!adminrole">Eliminar</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">Colegio Mayor</th>
-        <!-- <td>Finalizada</td> -->
+      <tr *ngFor="let evaluacion of evaluaciones">
+        
+        <td scope="row">{{evaluacion.nombreSitio}}</td>
         <td>
           <a [routerLink]="['/ver-resultados']" class="btn btn-primary">Ver resultado</a>
         </td>
-        <td>
+        <td *ngIf="adminrol">
           <a [routerLink]="['/calificar']" class="btn btn-success">Evaluar/Calificar</a>
         </td>
+        <td *ngIf="!adminrol">
+          <button (click)="borrarEvaluacion()" class="btn btn-danger">Eliminar</button>  
+          <!-- <a [routerLink]="['/calificar']" class="btn btn-danger">Eliminar</a> -->
+          </td>
       </tr>
-      <tr>
-        <th scope="row">Colegio Mayor</th>
-        <td>Convocada</td>
-        <td>
-          <!-- <a href="#" class="btn btn-primary">Ver resultado</a> -->
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">Colegio Mayor</th>
-        <td>Iniciada</td>
-        <td>
-          <!-- <a href="#" class="btn btn-primary">Ver resultado</a> -->
-        </td>
-      </tr>
-
     </tbody>
   </table>
 </div>
