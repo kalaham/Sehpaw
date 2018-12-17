@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BreadcrumbsComponent implements OnInit {
 
+  usu: any = JSON.parse(localStorage.getItem('usuario'));
+  rol:string = JSON.stringify(this.usu.role)
   constructor() { }
 
   ngOnInit() {

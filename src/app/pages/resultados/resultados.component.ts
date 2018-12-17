@@ -12,7 +12,8 @@ export class ResultadosComponent implements OnInit {
 
   adminRol: boolean = false;
   resultados: Resultado[] = [];
-  rol: string = localStorage.getItem('role');
+  usuario: any = JSON.parse(localStorage.getItem('usuario'));
+  rol:string = JSON.stringify(this.usuario.role)
   constructor(
     public _usuarioService: UsuarioService,
     public _resultadoService: ResultadoService
@@ -22,9 +23,19 @@ export class ResultadosComponent implements OnInit {
     this.cargarResultados();
   }
 
+
   cargarResultados() {
-    this._resultadoService.mostrarResultados()
-      .subscribe(resultados => this.resultados = resultados)
+    if (this.rol == "ADMIN_ROLE"){
+      this.adminRol = true;
+      this._resultadoService.mostrarResultados()
+      .subscribe(resultados => this.resultados = resultados);
+    }else{
+      this._resultadoService.mostrarResultadosRol()
+      .subscribe(resultados => this.resultados = resultados);
+    }
   }
+
+
+  
 
 }

@@ -6,31 +6,33 @@
                     <h4 class="card-title">Datos de la evaluacion</h4>
                     <form>
                         <div class="form-group form-control-sm">
-                            <label for="exampleInputEmail1">Coordinador</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                                placeholder="coordinador">
+                            <label for="e">Coordinador</label>
+                            <input [(ngModel)]="evaluacion.coordinador.nombre" name="coordinador" type="text" class="form-control"
+                                id="e">
 
-                            <label for="exampleInputEmail1">Fecha</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                                placeholder="date.date">
+                            <label for="ex">Fecha</label>
+                            <input [(ngModel)]="evaluacion.fecha" name="fecha" type="text" class="form-control" id="ex">
 
-                            <label for="exampleInputEmail1">Nombre del sitio</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                                placeholder="www.tales.com">
+                            <label for="exa">Nombre del sitio</label>
+                            <input [(ngModel)]="evaluacion.nombreSitio" name="nombreSitio" type="text" class="form-control"
+                                id="exa">
 
-                            <label for="exampleInputEmail1">URL del sitio</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                                placeholder="https://www.....">
+                            <label for="exam">URL del sitio</label>
+                            <input [(ngModel)]="evaluacion.urlSitio" name="urlSitio" type="url" class="form-control"
+                                id="exam">
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
-    message:'para realizar la evaluacion abra en una nueva pestaña en su navagdor favorito e ingrese al URL una vez
-    echo esto podra comenzar con la evaluacion evaluacion'
-
+    <div class="alert alert-info" role="alert">
+        <h4 class="alert-heading">Informacion!</h4>
+        <p>Para realizar la evaluacion abra en una nueva pestaña en su navagdor favorito e ingrese al URL una vez
+            echo esto podra comenzar con la evaluacion evaluacion</p>
+        <hr>
+        <p class="mb-0">Gracias por tu evaluacio</p>
+    </div>
     <table class="table">
         <thead>
             <tr>
@@ -40,33 +42,26 @@
                 <th>Calificacion</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td scope="row">P1</td>
-                <td>¿Las imagenes contienen alguntexto alternativo para mejorar su comprecion?</td>
-                <td>Que se encuentre la imagen de un paisage, al lado de esta debe existir un texto narrativo de la
-                    misma</td>
-                <td>
-                    <div class="form-group">
-                        <select class="form-control" name="calificacion" id="calificacion">
-                            <option>Selec</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                    </div>
+        <tbody >
+            <tr *ngFor="let h of evaluacion.heuristicas; let i=index">
+                <td>{{h.indice}}</td>
+                <td>{{h.pregunta}}</td>
+                <td>{{h.ejemplo}}</td>
+                <td WIDTH="50" >
+                    <select  [(ngModel)]="valores[i]" name="valores" class="form-control" id="i" required>
+                        <option >Selec</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
                 </td>
-            </tr>
-            <tr>
-                <td scope="row"></td>
-                <td></td>
-                <td></td>
             </tr>
         </tbody>
     </table>
 
+    <button (click)="guardarResultado()" type="submit" class="btn btn-success  derecha">Finalizar</button>
 
 
 </div>

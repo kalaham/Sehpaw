@@ -13,11 +13,13 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   recuerdame: boolean = false;
-  email:string;
+  email: string;
+  recarga: boolean = true;
   constructor(
-    public _router:Router,
+    public _router: Router,
     public _usuarioService: UsuarioService
-  ) { }
+
+  ) {}
 
   ngOnInit() {
     // init_plugins();
@@ -27,22 +29,31 @@ export class LoginComponent implements OnInit {
       this.recuerdame = true
     }
   }
-  ingresar(forma:NgForm){
+
+  recargar() {
+    if (this.recarga) {
+      location.reload();
+      this.recarga = false;
+    }
+  }
+
+  ingresar(forma: NgForm) {
     if (forma.invalid) {
       return;
     }
 
-    let usuario = new Usuario( null,
+    let usuario = new Usuario(null,
       forma.value.email,
       forma.value.password,
       null
     )
 
     this._usuarioService.login(usuario, forma.value.recuerdame)
-                        .subscribe(respuesta => {    
-                          this._router.navigate(['/evaluaciones'])
-                        });
-
+      .subscribe(respuesta => {
+        this._router.navigate(['/evaluaciones'])
+      });
   }
+
+
 
 }

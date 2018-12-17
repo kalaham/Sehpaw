@@ -16,8 +16,6 @@ export class UsuarioService {
     public _http: HttpClient,
     public _router: Router
   ) {
-    console.log();
-    
     this.cargarStorage();
   }
   login(usuario: Usuario, recordarme: boolean = false) {
@@ -31,9 +29,9 @@ export class UsuarioService {
     let url = URL_SERICIOS + '/login';
     return this._http.post(url, usuario).pipe(map((resp: any) => {
 
-      localStorage.setItem('id', resp.id);
+      // localStorage.setItem('id', resp.id);
       localStorage.setItem('token', resp.token);
-      localStorage.setItem('role', resp.usuario.role);
+      localStorage.setItem('usuario', JSON.stringify(resp.usuario));
       // localStorage.setItem('usuario', JSON.stringify(resp.usuario) );
       swal({
         title: 'Bienvenido',
@@ -56,10 +54,12 @@ export class UsuarioService {
     this.usuario = null;
     this.token = '';
 
-    localStorage.removeItem('usuario');
+    localStorage.removeItem('email');
     localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    localStorage.removeItem('role');
 
-    this._router.navigate(['/login']);
+    this._router.navigate(['/login', location.reload(true)]);
   }
 
   cargarStorage() {
@@ -100,6 +100,25 @@ export class UsuarioService {
         return resp.usuarios;
 
       }));
+  }
+
+  getEvaluadores(){
+    let url = URL_SERICIOS + '/usuario/evaluadores';
+    url = url + '/?token=' + this.token;
+    return this._http.get(url).pipe(map((resp: any) => {
+        console.log(resp.evaluadores);
+        
+        return resp.evaluadores;
+      }));
+  }
+
+  getusuario(id:any){
+    let url = URL_SERICIOS + '/usuario/'+ id;
+    url = url + '/?token=' + this.token;
+    return this._http.get(url).pipe(map((resp: any) => {
+      // console.log(resp.usuario);      
+      return resp.usuario;
+    }));
   }
 
  

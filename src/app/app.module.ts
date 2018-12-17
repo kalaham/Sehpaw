@@ -10,6 +10,7 @@ import { app_routes } from './app.routes';
 import { ServiceModule } from './services/service.module';
 import { PrincipalComponent } from './login/principal/principal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+// import { GraficoRadarComponent } from './components/grafico-radar/grafico-radar.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     RegisterComponent,
     PrincipalComponent,
+    // GraficoRadarComponent,
   ],
   imports: [
     BrowserModule,

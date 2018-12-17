@@ -16,10 +16,10 @@ export class UsuariosComponent implements OnInit {
   
 
   ngOnInit() {
-    this.cargarMedicos();    
+    this.cargarUsuarios();    
   }
 
-  cargarMedicos() {
+  cargarUsuarios() {
     this._usuarioService.mostrarUsuarios()
           .subscribe( usuarios => this.usuarios = usuarios );
   }

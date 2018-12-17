@@ -11,12 +11,20 @@ import { ConfiguracionesComponent } from './settings/configuraciones/configuraci
 import { PerfilComponent } from './settings/perfil/perfil.component';
 import { CalificarComponent } from './calificar/calificar.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { FormsModule } from '@angular/forms';
+import { PipesModule } from '../pipes/pipes.module';
+import { GraficoRadarComponent } from '../components/grafico-radar/grafico-radar.component';
+import { ChartsModule } from 'ng2-charts';
+
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
-    pages_routes
+    pages_routes,
+    FormsModule,
+    ChartsModule,
+    PipesModule
   ],
   declarations: [
     NuevaEvaluacionComponent, 
@@ -27,8 +35,12 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
     ConfiguracionesComponent,
     PerfilComponent,
     CalificarComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    GraficoRadarComponent
   ],
+  exports:[
+    GraficoRadarComponent
+  ]
   
 })
 export class PagesModule { }

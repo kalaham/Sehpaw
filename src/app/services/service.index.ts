@@ -1,3 +1,4 @@
+export { PrincipioService } from './principio/principio.service';
 export { AdminGuard } from './guards/admin.guard';
 export { ResultadoService } from './resultado/resultado.service';
 export { EvaluacionesService } from './evaluaciones/evaluaciones.service';

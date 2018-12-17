@@ -8,17 +8,22 @@ import { UsuarioService } from '../usuario/usuario.service';
 })
 export class AdminGuard implements CanActivate {
 
+  usu: any = JSON.parse(localStorage.getItem('usuario'));
+  rol:string = JSON.stringify(this.usu.role)
   constructor(
-    // public _usuarioService: UsuarioService
+     public _usuarioService: UsuarioService
   ) { }
 
   canActivate() {
-    if (localStorage.getItem('role') === 'ADMIN_ROLE') {
+    if (this.rol === '\"ADMIN_ROLE\"') {
+      console.log('Guard ADMIN superado');
+      
       return true;
     } else {
       console.log('Bloqueado por el ADMIN GUARD');
-      //this._usuarioService.logout();
+      this._usuarioService.logout();
       return false;
+      
     }
   }
 }

@@ -15,31 +15,21 @@
   <table class="table">
     <thead class="thead-dark">
       <tr>
-        <th scope="col">Evaluacion</th>
-        <th scope="col">Estado</th>
-        <th scope="col">Resultado</th>
+        <th scope="col">Id reultado</th>
+        <th scope="col">Id Evaluador</th>
+        <th scope="col">Id evaluacion</th>
+        <th scope="col">valores</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">Colegio Mayor</th>
-        <td>Finalizada</td>
+      <tr *ngFor="let r of resultados">
+        <th scope="row">{{r._id}}</th>
+        <td>{{r.evaluador}}</td>
         <td>
-          <a [routerLink]="['/ver-resultados']" class="btn btn-primary">Ver resultado</a>
+          {{r.evaluacion}}
         </td>
-      </tr>
-      <tr>
-        <th scope="row">Lauvid</th>
-        <td>Finalizada</td>
         <td>
-          <a [routerLink]="['/ver-resultados']" class="btn btn-primary">Ver resultado</a>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">facebook</th>
-        <td>Finalizada</td>
-        <td>
-          <a [routerLink]="['/ver-resultados']" class="btn btn-primary">Ver resultado</a>
+          <a [routerLink]="['/ver-resultados',r._id]" class="btn btn-primary">Ver resultado</a>
         </td>
       </tr>
     </tbody>

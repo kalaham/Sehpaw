@@ -16,25 +16,19 @@
     <thead class="thead-dark">
       <tr>
         <th scope="col">Evaluacion</th>
-        <th scope="col">Resultado</th>
-        <th scope="col" *ngIf="adminrole">Calificar</th>
-        <th scope="col" *ngIf="!adminrole">Eliminar</th>
+        <th scope="col" *ngIf="!adminrole">Opciones</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let evaluacion of evaluaciones">
-        
+
         <td scope="row">{{evaluacion.nombreSitio}}</td>
-        <td>
-          <a [routerLink]="['/ver-resultados']" class="btn btn-primary">Ver resultado</a>
+        <td >
+          <a *ngIf="role==1 || role==3" [routerLink]="['/ver-resultados',evaluacion._id]" class="btn btn-primary" style="margin-right: 15px;">Ver</a>
+          <a *ngIf="role==2" [routerLink]="['/calificar',evaluacion._id]" class="btn btn-success" style="margin-right: 15px;">Evaluar</a>
+          <a *ngIf="role==1 || role==3" [routerLink]="['/ver-resultados',evaluacion._id]" class="btn btn-info" style="margin-right: 15px;">Modificar</a>
+          <a *ngIf="role==1 || role==3" (click)="eliminarEvaluacion(evaluacion._id)" class="btn btn-danger text-white">Eliminar</a>
         </td>
-        <td *ngIf="adminrol">
-          <a [routerLink]="['/calificar']" class="btn btn-success">Evaluar/Calificar</a>
-        </td>
-        <td *ngIf="!adminrol">
-          <button (click)="borrarEvaluacion()" class="btn btn-danger">Eliminar</button>  
-          <!-- <a [routerLink]="['/calificar']" class="btn btn-danger">Eliminar</a> -->
-          </td>
       </tr>
     </tbody>
   </table>

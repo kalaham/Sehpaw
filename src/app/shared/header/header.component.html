@@ -18,6 +18,7 @@
                     <img src="assets/images/logo_text.png" alt="homepage" class="dark-logo logo-text" />
                 </span>
             </a>
+            
         </div>
         <!-- ============================================================== -->
         <!-- End Logo -->
@@ -66,8 +67,8 @@
                             <i class="mdi mdi-account-circle iconoPerfil"></i>Perfil</a>
                         <a class="dropdown-item " [routerLink]="['/settings']">
                             <i class="mdi mdi-settings iconoPerfil"></i>Config</a>
-                        <a class="dropdown-item" [routerLink]="['/login']" >
-                            <i class="mdi mdi-power iconoPerfil"></i>Salir</a>
+                        <a class="dropdown-item" (click)="_usuarioService.logout()">
+                            <i  class="mdi mdi-power iconoPerfil"></i>Salir</a>
                     </div>
 
 

@@ -7,8 +7,8 @@
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
-                <li *ngFor="let opcion of _sidebarService.menu">
-                    <a class="waves-effect waves-dark" [routerLink]="[opcion.url]" routerLinkActive="active" aria-expanded="false">
+                <li *ngFor="let opcion of _sidebarService.menu" routerLinkActive="active">
+                    <a class="waves-effect waves-dark" [routerLink]="[opcion.url]" aria-expanded="false">
                         <i [class]="opcion.icon"></i>
                         <span class="hide-menu">{{opcion.titulo}}</span>                        
                     </a>

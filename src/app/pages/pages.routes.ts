@@ -20,8 +20,8 @@ const pagesRoutes: Routes = [
             { path: 'evaluaciones', component: EvaluacionesComponent ,data: { titulo: 'Evaluaciones' }},
             { path: 'resultados', component: ResultadosComponent,data: { titulo: 'Resultado' } },
             { path: 'nueva-evaluacion', component: NuevaEvaluacionComponent,data: { titulo: 'Nueva evaluacion' } },
-            { path: 'ver-resultados', component: VerResultadoComponent,data: { titulo: 'Ver resultados' } },
-            { path: 'calificar', component: CalificarComponent,data: { titulo: 'Calificar' } },
+            { path: 'ver-resultados/:id', component: VerResultadoComponent,data: { titulo: 'Ver resultados' } },
+            { path: 'calificar/:id', component: CalificarComponent,data: { titulo: 'Calificar' } },
             { path: 'settings', component: ConfiguracionesComponent,data: { titulo: 'Configuracion' } },
             { path: 'account', component: PerfilComponent,data: { titulo: 'Perfil' } },
             { 
