@@ -18,8 +18,7 @@
                                 id="exa">
 
                             <label for="exam">URL del sitio</label>
-                            <input [(ngModel)]="evaluacion.urlSitio" name="urlSitio" type="url" class="form-control"
-                                id="exam">
+                            <input [(ngModel)]="evaluacion.urlSitio" name="urlSitio" type="url" class="form-control" id="exam">
                         </div>
                     </form>
                 </div>
@@ -31,6 +30,37 @@
         <p>Para realizar la evaluacion abra en una nueva pestaña en su navagdor favorito e ingrese al URL una vez
             echo esto podra comenzar con la evaluacion evaluacion</p>
         <hr>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Valor</th>
+                    <th>Descripcion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td scope="row">1</td>
+                    <td>Se da la mínima expresión del heurístico en las páginas evaluadas</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Se da una expresión baja del heurístico en las páginas evaluadas</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Se da una expresión media del heurístico en las páginas evaluadas</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Se da una expresión alta del heurístico en las páginas evaluadas</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Se da la máxima expresión del heurístico en las páginas evaluadas</td>
+                </tr>
+
+            </tbody>
+        </table>
         <p class="mb-0">Gracias por tu evaluacio</p>
     </div>
     <table class="table">
@@ -42,14 +72,14 @@
                 <th>Calificacion</th>
             </tr>
         </thead>
-        <tbody >
+        <tbody>
             <tr *ngFor="let h of evaluacion.heuristicas; let i=index">
                 <td>{{h.indice}}</td>
                 <td>{{h.pregunta}}</td>
                 <td>{{h.ejemplo}}</td>
-                <td WIDTH="50" >
-                    <select  [(ngModel)]="valores[i]" name="valores" class="form-control" id="i" required>
-                        <option >Selec</option>
+                <td WIDTH="50">
+                    <select [(ngModel)]="valores[i]" name="valores" class="form-control" id="i" required>
+                        <option>Selec</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>

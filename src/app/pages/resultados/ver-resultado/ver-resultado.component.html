@@ -56,7 +56,7 @@
       <h5 class="mb-0">
         <div class="btn btn-block btn-ligth" type="" data-toggle="collapse" data-target="#multiCollapseExample3"
           aria-expanded="false" aria-controls="multiCollapseExample2" role="button">
-          <h5 class="izquierda">Heuristicas </h5> <i class="zmdi zmdi-chevron-down derecha zmdi-hc-2x"></i>
+          <h5 class="izquierda">Heuristicas Evaluadas </h5> <i class="zmdi zmdi-chevron-down derecha zmdi-hc-2x"></i>
           <br>
         </div>
       </h5>
@@ -90,7 +90,7 @@
       <h5 class="mb-0">
         <div class="btn btn-block btn-ligth" data-toggle="collapse" data-target="#tabalaEvaluadores" aria-expanded="false"
           aria-controls="multiCollapseExample2" role="button">
-          <h5 class="izquierda">Evaluadores </h5> <i class="zmdi zmdi-chevron-down derecha zmdi-hc-2x"></i>
+          <h5 class="izquierda">Evaluadores convocados </h5> <i class="zmdi zmdi-chevron-down derecha zmdi-hc-2x"></i>
           <br>
         </div>
       </h5>
@@ -110,8 +110,8 @@
               <td>{{e.nombre}}</td>
               <td>{{e.email}}</td>
               <td>
-                <span class="badge badge-danger">No evaluada</span>
-                <span class="badge badge-success">Evaluada</span>
+                <span class="badge badge-danger" *ngIf="!evaluada">No evaluada</span>
+                <span class="badge badge-success" *ngIf="evaluada">Evaluada</span>
               </td>
             </tr>
           </tbody>
@@ -130,7 +130,7 @@
       <h5 class="mb-0">
         <div class="btn btn-block btn-ligth" data-toggle="collapse" data-target="#acordeonTabla" aria-expanded="false"
           aria-controls="multiCollapseExample2" role="button">
-          <h5 class="izquierda">Tablas </h5> <i class="zmdi zmdi-chevron-down derecha zmdi-hc-2x"></i>
+          <h5 class="izquierda">Todas las heuristicas </h5> <i class="zmdi zmdi-chevron-down derecha zmdi-hc-2x"></i>
           <br>
         </div>
       </h5>
@@ -143,15 +143,25 @@
               <tr>
                 <th>Indice</th>
                 <th>Principio 1 Prceptible</th>
-                <th>Promedio</th>
                 <th *ngFor="let e of resultados">Evaluador {{e.evaluador.nombre}}</th>
+                <th>Promedio</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let h of evaluacion.heuristicas, let i=index">
                 <td>{{h.indice}}</td>
-                <td>{{h.heuristica}}</td>
+                <td>{{h.pregunta}}</td>
+                <td>{{resultados[0].valores[i]}} </td>
+                <td>{{resultados[1].valores[i]}} </td>
+                <td>
+                  {{(resultados[0].valores[i] + resultados[1].valores[i]) / 2}}
+                </td>
+              </tr>
+              <tr>
                 <td> </td>
+                <td></td>
+                <td></td>
+                <td> Total</td>
                 <td> </td>
               </tr>
             </tbody>
@@ -160,27 +170,127 @@
       </div>
     </div>
   </div>
+  <!-- End tablas -->
+  <!-- Start tablas 2 -->
   <div class="accordion" id="accordion">
     <div class="card">
       <div class="card-header" id="headingOne">
         <h5 class="mb-0">
-          <div class="btn btn-block btn-ligth" data-toggle="collapse" data-target="#acordeonReultados" aria-expanded="false"
+          <div class="btn btn-block btn-ligth" data-toggle="collapse" data-target="#acordeonTabla2" aria-expanded="false"
             aria-controls="multiCollapseExample2" role="button">
-            <h5 class="izquierda">Graficos </h5> <i class="zmdi zmdi-chevron-down derecha zmdi-hc-2x"></i>
+            <h5 class="izquierda">Tablas por principio</h5> <i class="zmdi zmdi-chevron-down derecha zmdi-hc-2x"></i>
             <br>
           </div>
         </h5>
       </div>
-      <div class="collapse multi-collapse" id="acordeonReultados">
+      <div class="collapse multi-collapse" id="acordeonTabla2">
         <div class="card card-body">
-          <div class="card card-body" *ngFor="let resultado of resultados">
-            {{indices }}
-            <br>
-            {{resultado.valores | json}}
 
-            <app-grafico-radar [chartLabels]="indices" [chartData]="resultado.valores" chartType="radar">
-            </app-grafico-radar>
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="table-responsive">
+                  <table class="table table-hover table-light table-responsive" *ngFor="let prin of p">
+                    <thead class="thead-inverse">
+                      <tr>
+                        <h5>{{prin.principio | titlecase}}</h5>
+                      </tr>
+                      <tr>
+                        <th>IND</th>
+                        <th>Pregunta</th>
+                        <th *ngFor="let e of resultados">Evaluador {{e.evaluador.nombre}}</th>
+                        <th>Promedio</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let heuristica of prin.heuristicas, let i=index">
+                        <td>{{heuristica.indice}}</td>
+                        <td>{{heuristica.pregunta}}</td>
+                        <td>{{resultados[0].valores[i]}} </td>
+                        <td>{{resultados[1].valores[i]}} </td>
+                        <td>
+                          {{(resultados[0].valores[i] + resultados[1].valores[i]) / 2}}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Total</td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
           </div>
+
+
         </div>
       </div>
     </div>
+
+    <!-- End tablas 2 -->
+    <!-- start graficos -->
+    <div class="accordion" id="accordion">
+      <div class="card">
+        <div class="card-header" id="headingOne">
+          <h5 class="mb-0">
+            <div class="btn btn-block btn-ligth" data-toggle="collapse" data-target="#acordeonReultados" aria-expanded="false"
+              aria-controls="multiCollapseExample2" role="button">
+              <h5 class="izquierda">Graficos </h5> <i class="zmdi zmdi-chevron-down derecha zmdi-hc-2x"></i>
+              <br>
+            </div>
+          </h5>
+        </div>
+        <div class="collapse multi-collapse" id="acordeonReultados">
+          <div class="card card-body" *ngFor="let resultado of resultados">
+            <div class="card card-body">
+              {{sliceResultados(resultado.valores)}}
+              <h4>{{resultado.evaluador.nombre}}</h4>
+              <h5 class="font-weight-normal">Perceptible</h5>
+              <br>
+              <!-- {{perceptible}} -->
+              <app-grafico-radar [chartLabels]="indicesPerceptible" [chartData]="perceptible" chartType="radar">
+              </app-grafico-radar>
+              <h5 class="font-weight-normal">Operable</h5>
+              <br>
+              <!-- {{operable}} -->
+              <app-grafico-radar [chartLabels]="indicesOperable" [chartData]="operable" chartType="radar">
+              </app-grafico-radar>
+              <h5 class="font-weight-normal">Comprencible</h5>
+              <br>
+              <!-- {{comprencible}} -->
+              <app-grafico-radar [chartLabels]="indicesComprencible" [chartData]="comprencible" chartType="radar">
+              </app-grafico-radar>
+              <h5 class="font-weight-normal">Robusto</h5>
+              <br>
+              <!-- {{robusto}} -->
+              <app-grafico-radar [chartLabels]="indicesRobusto" [chartData]="robusto" chartType="radar">
+              </app-grafico-radar>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End graficos -->
+      <!-- Start Recomendaciones -->
+      <!-- <div class="accordion" id="accordion">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+              <div class="btn btn-block btn-ligth" data-toggle="collapse" data-target="#recomendaciones" aria-expanded="false"
+                aria-controls="multiCollapseExample2" role="button">
+                <h5 class="izquierda">Recomendaciones </h5> <i class="zmdi zmdi-chevron-down derecha zmdi-hc-2x"></i>
+                <br>
+              </div>
+            </h5>
+          </div>
+          <div class="collapse multi-collapse" id="recomendaciones">
+            <div class="card card-body">
+
+            </div>
+          </div>
+        </div> -->
+        <!-- End recomendaciones -->
