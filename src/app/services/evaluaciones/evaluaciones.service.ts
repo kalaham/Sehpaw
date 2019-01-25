@@ -93,10 +93,26 @@ export class EvaluacionesService {
   eliminarEvaluacion(id:string){
     let url = URL_SERICIOS + '/evaluacion/'+ id;
     url = url + '/?token=' + this.token;
-    return this._http.delete(url).pipe(map((resp: any) => {
-          
+    return this._http.delete(url).pipe(map((resp: any) => {          
       return resp.evaluacion;
     }));
+  }
+
+  actualizarValores(id: string, valores:any){
+    let url = URL_SERICIOS + '/evaluacion/'+ id;
+    url = url + '/?token=' + this.token;
+    console.log(valores);    
+    return this._http.put(url, valores).pipe(map((resp:any) => { 
+      swal({
+        title: 'Gracias por tu valoracion',
+        text:'Tus respuestas seran valoradas para el coordinador',
+        timer: 2000,
+        type: 'success',
+        showConfirmButton: true
+      })
+      return resp.evaUpdate
+     }));
+     
   }
 
 }

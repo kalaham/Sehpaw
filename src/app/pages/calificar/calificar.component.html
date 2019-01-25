@@ -4,27 +4,27 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Datos de la evaluacion</h4>
+                    <!-- {{evaluacion.coordinador | json}}  -->
                     <form>
                         <div class="form-group form-control-sm">
                             <label for="e">Coordinador</label>
-                            <input [(ngModel)]="evaluacion.coordinador.nombre" name="coordinador" type="text" class="form-control"
-                                id="e">
+                            <input [(ngModel)]="evaluacion?.coordinador.nombre" name="coordinador" type="text" class="form-control" id="e">
 
-                            <label for="ex">Fecha</label>
-                            <input [(ngModel)]="evaluacion.fecha" name="fecha" type="text" class="form-control" id="ex">
+                            <label for="fecha">Fecha</label>
+                            <input [(ngModel)]="evaluacion.fecha" name="fecha" type="text" class="form-control" id="fecha">
 
-                            <label for="exa">Nombre del sitio</label>
-                            <input [(ngModel)]="evaluacion.nombreSitio" name="nombreSitio" type="text" class="form-control"
-                                id="exa">
+                            <label for="nameSitio">Nombre del sitio</label>
+                            <input [(ngModel)]="evaluacion.nombreSitio" name="nombreSitio" type="text" class="form-control" id="nameSitio">
 
-                            <label for="exam">URL del sitio</label>
-                            <input [(ngModel)]="evaluacion.urlSitio" name="urlSitio" type="url" class="form-control" id="exam">
+                            <label for="url">URL del sitio</label>
+                            <input [(ngModel)]="evaluacion.urlSitio" name="urlSitio" type="url" class="form-control" id="url">
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    <!------------------- START INSTRUCIONES ---------------------->
     <div class="alert alert-info" role="alert">
         <h4 class="alert-heading">Informacion!</h4>
         <p>Para realizar la evaluacion abra en una nueva pestaña en su navagdor favorito e ingrese al URL una vez
@@ -63,6 +63,9 @@
         </table>
         <p class="mb-0">Gracias por tu evaluacio</p>
     </div>
+    <!-------------------  END INSTRUCIONES ---------------------->
+    <!------------------- START TABLA DE EVALUACION ---------------------->
+
     <table class="table">
         <thead>
             <tr>
@@ -90,6 +93,7 @@
             </tr>
         </tbody>
     </table>
+    <!-------------------  END TABLA DE EVALUACION ---------------------->
 
     <button (click)="guardarResultado()" type="submit" class="btn btn-success  derecha">Finalizar</button>
 

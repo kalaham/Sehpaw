@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { EvaluacionesService } from 'src/app/services/service.index';
 import { ActivatedRoute } from '@angular/router';
 import { Evaluacion } from '../../../models/evaluacion.model';
@@ -23,20 +23,10 @@ export class VerResultadoComponent implements OnInit {
     'Peor principio',
     'Por evaluador'
   ]
-  bandera: boolean = true;
-  resultados: Resultado[] = []
-  indices: string[] = [];
   p: Principio[] = [];
-  evaluada: boolean = false;
+  promedios: any = [];
+  promediosPrincipios:any = [];
 
-  perceptible: number[] = [];
-  comprencible: number[] = [];
-  operable: number[] = [];
-  robusto: number[] = [];
-  indicesPerceptible: string[] = [];
-  indicesComprencible: string[] = [];
-  indicesOperable: string[] = [];
-  indicesRobusto: string[] = [];
 
   constructor(
     public _evaluacionService: EvaluacionesService,
@@ -49,7 +39,6 @@ export class VerResultadoComponent implements OnInit {
       let id = params['id'];
       if (id !== '') {
         this.cargarEvaluacion(id);
-        this.cargarResultados(id);
       }
     });
 
@@ -59,64 +48,12 @@ export class VerResultadoComponent implements OnInit {
     this.cargarPrincipios()
   }
 
-  sliceResultados(valores: any) {
-
-    this.perceptible = valores.slice(0, 12)
-    this.operable = valores.slice(12, 27)
-    this.comprencible = valores.slice(27, 42)
-    this.robusto = valores.slice(42, 51)
-
-    // for (const resultado of resultados) {
-
-    //   this.perceptible = resultado.valores.slice(0, 12)
-    //   this.operable = resultado.valores.slice(13, 27)
-    //   this.comprencible = resultado.valores.slice(27, 42)
-    //   this.robusto = resultado.valores.slice(42, 51)
-    //   console.log('principio PERCEPTIBLE ' + this.perceptible);
-    //   console.log('principio OPERABLE ' + this.operable);
-    //   console.log('principio COMPRENCIBLE ' + this.comprencible);
-    //   console.log('principio ROBUSTO ' + this.robusto);
-    // }
-
-
-  }
-
-  cargarResultados(id: string) {
-    this._resultadoService.mostrarResultadosEvaluacion(id).subscribe(resultados => {
-      this.resultados = resultados
-      // this.sliceResultados(this.resultados)
-      console.log(this.resultados);
-      if (!resultados) {
-
-      } else {
-        this.evaluada = true;
-      }
-    })
-  }
-
   cargarEvaluacion(id: string) {
     this._evaluacionService.mostrarEvalaucion(id).subscribe(evalu => {
       this.evaluacion = evalu;
-      this.evaluacion
       console.log(evalu);
-      this.getIndices(evalu)
+      this.calcular(evalu)
     })
-  }
-
-  getIndices(evaluacion: any) {
-    for (const h of evaluacion.heuristicas) {
-      this.indices.push(h.indice)
-    }
-    this.indicesPerceptible = this.indices.slice(0, 12)
-    this.indicesOperable = this.indices.slice(12, 27)
-    this.indicesComprencible = this.indices.slice(27, 42)
-    this.indicesRobusto = this.indices.slice(42, 51)
-    console.log('principio PERCEPTIBLE ' + this.indicesPerceptible);
-    console.log('principio OPERABLE ' + this.indicesOperable);
-    console.log('principio COMPRENCIBLE ' + this.indicesComprencible);
-    console.log('principio ROBUSTO ' + this.indicesRobusto);
-
-    console.log(this.indices);
   }
 
   cargarPrincipios() {
@@ -124,6 +61,32 @@ export class VerResultadoComponent implements OnInit {
       this.p = principio;
       console.log(this.p);
     })
+  }
+
+  calcular(eva: any) {
+    
+    var numEva = parseInt(eva.evaluadores.length);
+
+    for (const i in eva.evaluadores[0].valores) {
+      let pro: number = 0;
+      for (const j in eva.evaluadores) {
+        var t = parseInt(eva.evaluadores[j].valores[i])
+        pro = (pro + t)
+        if (parseInt(j) == (numEva - 1)) {
+          pro = pro / numEva;
+          this.promedios.push(pro.toFixed(2))
+        }
+
+
+      }
+    }
+    console.log(this.promedios);
+
+    
+
+
+
+
   }
 
 }

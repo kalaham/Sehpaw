@@ -4,7 +4,7 @@ export class Evaluacion{
         public fecha:Date,
         public nombreSitio:string,        
         public urlSitio:string,        
-        public evaluadores:Array<string>,        
+        public evaluadores:Array<any>,        
         public heuristicas:Array<string>,        
         public estado:boolean,        
         public _id?:String
