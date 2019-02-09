@@ -11,7 +11,10 @@ export class GraficoRadarComponent implements OnInit {
   @Input('chartData') radarChartData: number[] = [];
   @Input('chartType') radarChartType: string = 'radar';
 
-  constructor() { }
+  constructor() {
+    console.log(this.radarChartData);
+    
+   }
 
   ngOnInit() {
   }
