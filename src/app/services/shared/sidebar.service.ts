@@ -18,7 +18,7 @@ export class SidebarService {
 
       this.menu = [
         { titulo: 'Evaluaciones', url: '/evaluaciones', icon: 'mdi mdi-clipboard-text' },
-        { titulo: 'resultados', url: '/resultados', icon: 'mdi mdi-clipboard-check' }
+        // { titulo: 'resultados', url: '/resultados', icon: 'mdi mdi-clipboard-check' }
       ]
 
     }
@@ -28,7 +28,7 @@ export class SidebarService {
       this.menu = [
         { titulo: 'Nueva Evaluacion', url: '/nueva-evaluacion', icon: 'mdi mdi-playlist-plus' },
         { titulo: 'Evaluaciones', url: '/evaluaciones', icon: 'mdi mdi-clipboard-text' },
-        { titulo: 'Resultados', url: '/resultados', icon: 'mdi mdi-clipboard-check' }
+        // { titulo: 'Resultados', url: '/resultados', icon: 'mdi mdi-clipboard-check' }
       ]
 
     }
@@ -36,7 +36,7 @@ export class SidebarService {
       this.menu = [
         { titulo: 'Usuarios', url: '/usuarios', icon: 'mdi mdi-account-multiple' },
         { titulo: 'Evaluaciones', url: '/evaluaciones', icon: 'mdi mdi-clipboard-text' },
-        { titulo: 'Resultados ', url: '/resultados', icon: 'mdi mdi-clipboard-check' }
+        // { titulo: 'Resultados ', url: '/resultados', icon: 'mdi mdi-clipboard-check' }
       ]
     }
   }

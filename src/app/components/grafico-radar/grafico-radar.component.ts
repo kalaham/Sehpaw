@@ -8,23 +8,33 @@ import { Component, OnInit, Input } from '@angular/core';
 export class GraficoRadarComponent implements OnInit {
 
   @Input('chartLabels') radarChartLabels: string[] = [];
-  @Input('chartData') radarChartData: number[] = [];
+  @Input('chartData') radarChartData: any = [];
   @Input('chartType') radarChartType: string = 'radar';
 
+  options= {
+    scale: {
+      ticks: {
+        max: 5,
+        min: 0,
+        stepSize: 1
+      }
+    }
+  }
+
   constructor() {
-    console.log(this.radarChartData);
-    
-   }
+    // console.log(this.radarChartData, this.radarChartLabels);
+
+  }
 
   ngOnInit() {
   }
 
   // events
-  public chartClicked(e:any):void {
+  public chartClicked(e: any): void {
     console.log(e);
   }
- 
-  public chartHovered(e:any):void {
+
+  public chartHovered(e: any): void {
     console.log(e);
   }
 }

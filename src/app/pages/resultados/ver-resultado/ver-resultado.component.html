@@ -36,7 +36,7 @@
       </div>
     </div>
   </div>
-  <div class="col-sm-4">
+  <!-- <div class="col-sm-4">
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Filtrar</h5>
@@ -47,7 +47,7 @@
       </div>
     </div>
     <button class="btn btn-success m-r-10 derecha">Aplicar</button>
-  </div>
+  </div> -->
 </div>
 <!-- END  FORMULARIO DE LA EVALUCION -->
 <!-- START ACORDEON HEURISTICAS EVALUADAS -->
@@ -251,8 +251,9 @@
       <div class="card card-body" *ngFor="let p of prin; let i=index">
         <h4>{{p.titulo}}</h4>
         <br>
-        <!-- <app-grafico-radar [chartLabels]="p[i].h.indice" [chartData]="h.valores" chartType="radar">
-        </app-grafico-radar> -->
+        <!-- {{p.hs | json}} -->
+        <app-grafico-radar [chartLabels]="p.i" [chartData]="p.data" chartType="radar">
+        </app-grafico-radar>
 
       </div>
     </div>
