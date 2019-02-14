@@ -13,23 +13,24 @@
         <form>
           <div class="form-group ">
             <label for="exampleInputEmail1">Coordinador</label>
-            <input [(ngModel)]="evaluacion.coordinador.nombre" name="coordinador" type="text" class="form-control form-control form-control-sm"
-              id="coordinador" placeholder="nombre_coordinador" disabled>
+            <input [(ngModel)]="evaluacion.coordinador.nombre" name="coordinador" type="text"
+              class="form-control form-control form-control-sm" id="coordinador" placeholder="nombre_coordinador"
+              disabled>
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Fecha</label>
-            <input [(ngModel)]="evaluacion.fecha" name="fecha" type="text" class="form-control form-control form-control-sm"
-              id="fecha" placeholder="fecha_evaluaicon" disabled>
+            <input [(ngModel)]="evaluacion.fecha" name="fecha" type="text"
+              class="form-control form-control form-control-sm" id="fecha" placeholder="fecha_evaluaicon" disabled>
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Nombre del sitio</label>
-            <input [(ngModel)]="evaluacion.nombreSitio" name="nombreSitio" type="text" class="form-control form-control form-control-sm"
-              id="nombreSitio" placeholder="nombre_sitio" disabled>
+            <input [(ngModel)]="evaluacion.nombreSitio" name="nombreSitio" type="text"
+              class="form-control form-control form-control-sm" id="nombreSitio" placeholder="nombre_sitio" disabled>
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">URL del sitio</label>
-            <input [(ngModel)]="evaluacion.urlSitio" name="urlSitio" type="url" class="form-control form-control form-control-sm"
-              id="urlSitio" placeholder="ur_sitio" disabled>
+            <input [(ngModel)]="evaluacion.urlSitio" name="urlSitio" type="url"
+              class="form-control form-control form-control-sm" id="urlSitio" placeholder="ur_sitio" disabled>
           </div>
         </form>
 
@@ -90,8 +91,8 @@
   <div class="card">
     <div class="card-header" id="headingOne">
       <h5 class="mb-0">
-        <div class="btn btn-block btn-ligth" data-toggle="collapse" data-target="#tabalaEvaluadores" aria-expanded="false"
-          aria-controls="multiCollapseExample2" role="button">
+        <div class="btn btn-block btn-ligth" data-toggle="collapse" data-target="#tabalaEvaluadores"
+          aria-expanded="false" aria-controls="multiCollapseExample2" role="button">
           <h5 class="izquierda">Evaluadores convocados </h5> <i class="zmdi zmdi-chevron-down derecha zmdi-hc-2x"></i>
           <br>
         </div>
@@ -235,13 +236,59 @@
 </div>
 
 <!-- End ACORDEON PROMEDIO POR PRINCIPIO -->
+<!-- start tabla promedios de los principios -->
+<div class="accordion" id="accordion">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <div class="btn btn-block btn-ligth" data-toggle="collapse" data-target="#acordeonReultadosprincipios"
+          aria-expanded="false" aria-controls="multiCollapseExample2" role="button">
+          <h5 class="izquierda">Prinncipios </h5> <i class="zmdi zmdi-chevron-down derecha zmdi-hc-2x"></i>
+          <br>
+        </div>
+      </h5>
+    </div>
+    <div class="collapse multi-collapse" id="acordeonReultadosprincipios">
+
+      <div class="card card-body">
+        <table class="table">
+          <thead class="bg-dark text-light font-weight-bold text-center">
+            <tr>
+              <td rowspan="2"> Principios</td>
+              <td colspan="3">Niveles de conformidad</td>
+            </tr>
+            <tr>
+              <td>A</td>
+              <td>AA</td>
+              <td>AAA</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let p of prin">
+              <td scope="row"> {{p.titulo}}</td>
+              <td class="text-center"> 
+                {{p.total | number:'1.1-2' }}
+                <br>
+                <label *ngIf="(p.total > 3)"> CONFORME </label>
+                <label *ngIf="p.total < 3"> NO CONFORME </label>
+               </td>
+              <td class="text-center">3.2</td>
+              <td class="text-center">4.0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end tabla promedios de los principios -->
 <!-- start graficos -->
 <div class="accordion" id="accordion">
   <div class="card">
     <div class="card-header" id="headingOne">
       <h5 class="mb-0">
-        <div class="btn btn-block btn-ligth" data-toggle="collapse" data-target="#acordeonReultados" aria-expanded="false"
-          aria-controls="multiCollapseExample2" role="button">
+        <div class="btn btn-block btn-ligth" data-toggle="collapse" data-target="#acordeonReultados"
+          aria-expanded="false" aria-controls="multiCollapseExample2" role="button">
           <h5 class="izquierda">Graficos </h5> <i class="zmdi zmdi-chevron-down derecha zmdi-hc-2x"></i>
           <br>
         </div>

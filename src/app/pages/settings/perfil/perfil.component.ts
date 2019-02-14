@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EvaluacionesService } from '../../../services/evaluaciones/evaluaciones.service';
 
 @Component({
   selector: 'app-perfil',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class PerfilComponent implements OnInit {
-
-  constructor() { }
+  usu: any = JSON.parse(localStorage.getItem('usuario'));
+  evaluaciones: number;
+  constructor(
+    public _evaluacionesService: EvaluacionesService,
+  ) { }
 
   ngOnInit() {
+    this._evaluacionesService.mostarEvaluacionesRol().subscribe((data) => this.evaluaciones = data.length)
   }
 
 }

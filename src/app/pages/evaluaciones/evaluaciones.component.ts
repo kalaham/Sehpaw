@@ -41,7 +41,11 @@ export class EvaluacionesComponent implements OnInit {
         this.role=3
       }
       this._evaluacionesService.mostarEvaluacionesRol()
-        .subscribe(evaluaciones => this.evaluaciones = evaluaciones)
+        .subscribe(evaluaciones => {
+          console.log(evaluaciones);
+          
+          this.evaluaciones = evaluaciones})
+        
     }
   }
 

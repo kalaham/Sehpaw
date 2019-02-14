@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { URL_SERICIOS } from '../../config/config';
 import { map } from 'rxjs/operators';
 import swal from 'sweetalert2';
+import { timer } from 'rxjs';
 
 
 @Injectable({
@@ -61,14 +62,17 @@ export class EvaluacionesService {
     let url = URL_SERICIOS + '/evaluacion';
     url = url + '/?token=' + this.token;
     return this._http.post(url, evaluacion).pipe(map((resp: any) => {
+    
 
       swal({
         title: 'Evalucion creada para: ' + evaluacion.nombreSitio,
-        timer: 2000,
+        timer: 3000,
         type: 'success',
         showConfirmButton: false
+       
       })
-      return resp.evaluaciones;
+      
+      return this._router.navigate(['/evaluaciones']);
     }));
   }
 

@@ -28,8 +28,8 @@
             <a [routerLink]="['/settings']" class="btn btn-dark" data-toggle="tooltip" data-placement="top" title="Configuraciones">
                 <i class="mdi mdi-settings iconoSidebar"></i>
             </a>
-            <a  class="btn btn-dark" data-toggle="tooltip" data-placement="top" title="Salir">
-                <i class="mdi mdi-power iconoSidebar"></i>
+            <a  class="btn btn-dark" data-toggle="tooltip" data-placement="top" title="Salir" (click)="_usuarioService.logout()">
+                <i class="mdi mdi-power iconoSidebar" ></i>
             </a>
 
         </div>

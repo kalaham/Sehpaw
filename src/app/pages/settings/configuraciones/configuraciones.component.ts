@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class ConfiguracionesComponent implements OnInit {
+  usu: any = JSON.parse(localStorage.getItem('usuario'));
 
   constructor() { }
 

@@ -12,7 +12,7 @@ import { PrincipioService } from '../../../services/principio/principio.service'
   styles: []
 })
 export class VerResultadoComponent implements OnInit {
-  data: any = [  ];
+  data: any = [];
   evaluacion: Evaluacion = new Evaluacion('', new Date, '', '', [], [], false);
   menu: string[] = ['Por Heuristicas',
     'Mejor Heuristica',
@@ -33,9 +33,9 @@ export class VerResultadoComponent implements OnInit {
   Icomprencible: any = []
 
   dataPerceptoble: any = [
-    {data:[1,2,3], label:'amelia'},
-    {data:[1,2,3], label:'yeison'},
-    {data:[1,2,3], label:'david'},
+    { data: ['0']},
+    { data: ['0'] },
+    { data: ['0'] },
   ]
   dataOperable: any = []
   dataRobusto: any = []
@@ -48,7 +48,7 @@ export class VerResultadoComponent implements OnInit {
       hs: this.perceptible,
       i: this.Iperceptible,
       total: 0,
-      data:this.dataPerceptoble
+      data: this.dataPerceptoble
 
     },
     {
@@ -56,13 +56,13 @@ export class VerResultadoComponent implements OnInit {
       hs: this.comprencible,
       i: this.Icomprencible,
       total: 0,
-      data:this.dataPerceptoble
+      data: this.dataPerceptoble
     },
     {
       titulo: 'Operable',
       hs: this.operable,
       i: this.Ioperable,
-      data:this.dataPerceptoble,
+      data: this.dataPerceptoble,
 
       total: 0
     },
@@ -70,7 +70,7 @@ export class VerResultadoComponent implements OnInit {
       titulo: 'Robusto',
       hs: this.robusto,
       i: this.Irobusto,
-      data:this.dataPerceptoble,
+      data: this.dataPerceptoble,
 
       total: 0
     }
@@ -145,7 +145,7 @@ export class VerResultadoComponent implements OnInit {
   }
 
   agruparPorPrincipio(heuriscas: any) {
-    var slice =3;
+    var slice = 3;
     for (const h of heuriscas) {
       switch (h.indice.charAt(0)) {
         case "P":
@@ -187,21 +187,23 @@ export class VerResultadoComponent implements OnInit {
 
   graficaPorPrincipio() {
     var slice = 3;
+    var aux = [];
     for (const p of this.prin) {
-    var arr = [];
+      var arr = [];
 
       for (const evaluador of this.evaluacion.evaluadores) {
-        var obj = { data: [parseInt(evaluador.valores)  ], label: evaluador.evaluador.nombre }
-        console.log(obj);
-        
+        aux = []
+        for (const valor of evaluador.valores.slice(0, p.hs.length)) {
+          aux.push(parseInt(valor))
+        }
+        // console.log(aux);
+        var obj = { data: aux, label: evaluador.evaluador.nombre }
+        // console.log(obj);
         arr.push(obj)
       }
-      console.log(arr);
-      
+      // console.log(arr);
       p.data = arr
       slice += 3
     }
-
-
   }
 }
