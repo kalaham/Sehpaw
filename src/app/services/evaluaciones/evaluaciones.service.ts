@@ -3,7 +3,9 @@ import { Evaluacion } from '../../models/evaluacion.model';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { URL_SERICIOS } from '../../config/config';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
+
 import swal from 'sweetalert2';
 import { timer } from 'rxjs';
 
@@ -68,12 +70,23 @@ export class EvaluacionesService {
         title: 'Evalucion creada para: ' + evaluacion.nombreSitio,
         timer: 3000,
         type: 'success',
-        showConfirmButton: false
-       
+        showConfirmButton: false       
       })
       
       return this._router.navigate(['/evaluaciones']);
-    }));
+    }), catchError((err) => {
+      console.log(err.error);
+      
+     
+
+      swal({
+        title: err.error.mensaje,
+        type: 'error',
+        text: err.error.errors.message,
+        showConfirmButton: true
+      })
+      return throwError(err)
+     }));
   }
 
   monstarHeuristicas(){

@@ -2,9 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Usuario } from '../../models/usuario.model';
 import { URL_SERICIOS } from '../../config/config';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import swal from 'sweetalert2';
 import { Router } from '@angular/router';
+
+import { throwError } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -42,6 +44,14 @@ export class UsuarioService {
       })
       this.cargarStorage();
       return true;
+    }), catchError( err => {
+      swal({
+        title:'Error en el login',
+        type: 'error',
+        text: 'Credenciales incorrectas',
+        showConfirmButton: true
+      })
+      return throwError(err)
     }));
   }
 

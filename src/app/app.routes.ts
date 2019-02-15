@@ -5,9 +5,10 @@ import { RegisterComponent } from './login/register.component';
 import { PrincipalComponent } from './login/principal/principal.component';
 
 const routes: Routes = [
+    { path: 'principal', component: PrincipalComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
-    { path: 'principal', component: PrincipalComponent },
+    
     { path: '**', component: NopagefoundComponent }
 ];
 
